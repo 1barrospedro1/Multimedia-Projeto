@@ -303,8 +303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadBob
   bobSpeed: 14
-  bobAmount: 0.05
+  bobAmount: 0.1
   playerRigidbody: {fileID: 1913517432}
+  playerMovement: {fileID: 1913517431}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,14 +1288,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce65adc81468774c8ecdb74eaf9d8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
   crouchSpeed: 2.5
-  jumpForce: 3
+  jumpForce: 4
+  walkSpeed: 5
+  sprintSpeed: 10
   groundCheck: {fileID: 1654191409}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 128
+  isGrounded: 0
   moveAction:
     m_Name: Move
     m_Type: 0
@@ -1376,6 +1379,23 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Crouch
+      m_Flags: 0
+    m_Flags: 0
+  sprintAction:
+    m_Name: Sprint
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ea0720b5-b5e8-4e79-85c1-0941017aa814
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b64dc05b-73aa-4205-8267-bd365641d0ff
+      m_Path: <Keyboard>/shift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Sprint
       m_Flags: 0
     m_Flags: 0
 --- !u!54 &1913517432
@@ -1514,6 +1534,7 @@ GameObject:
   - component: {fileID: 2110753103}
   - component: {fileID: 2110753102}
   - component: {fileID: 2110753101}
+  - component: {fileID: 2110753104}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -1660,6 +1681,21 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!114 &2110753104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110753099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0792ff97bc13784e92afe11a2a2a55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlightFlicker
+  flashlight: {fileID: 2110753103}
+  minWaitTime: 0.2
+  maxWaitTime: 4
 --- !u!1 &2124084037
 GameObject:
   m_ObjectHideFlags: 0
