@@ -3,33 +3,31 @@ using UnityEngine;
 public class HeadBob : MonoBehaviour
 {
     [Header("Head Bob Settings")]
-    public float bobSpeed = 14f; // How fast the camera bobs (matches footstep speed)
-    public float bobAmount = 0.05f; // How high and low the camera goes
+    public float bobSpeed = 14f; 
+    public float bobAmount = 0.05f; 
     
-    [Tooltip("Drag your Player object here so we know how fast they are moving")]
+    [Header("References")]
     public Rigidbody playerRigidbody;
+    // NEW: need a reference to the player movement script to check if the player is grounded
+    public PlayerMovement playerMovement; 
 
     private float defaultPosY = 0;
     private float timer = 0;
 
     void Start()
     {
-        // Store the starting height of the camera (your eye level)
         defaultPosY = transform.localPosition.y;
     }
 
     void Update()
     {
-        // Calculate the player's current speed, ignoring the Y axis so falling doesn't trigger head bob
+        // Calculate the player's current speed
         float speed = new Vector3(playerRigidbody.linearVelocity.x, 0f, playerRigidbody.linearVelocity.z).magnitude;
 
-        // If the player is moving on the ground
-        if (speed > 0.1f)
+        // NEW: added "&& playerMovement.isGrounded" to this check
+        if (speed > 0.1f && playerMovement.isGrounded)
         {
-            // Increase the timer based on speed
             timer += Time.deltaTime * bobSpeed;
-            
-            // Apply the Sine wave math to the camera's local Y position
             transform.localPosition = new Vector3(
                 transform.localPosition.x, 
                 defaultPosY + Mathf.Sin(timer) * bobAmount, 
@@ -37,7 +35,6 @@ public class HeadBob : MonoBehaviour
         }
         else
         {
-            // If the player stops moving, smoothly return the camera back to the default eye level
             timer = 0;
             transform.localPosition = new Vector3(
                 transform.localPosition.x, 
