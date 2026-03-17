@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Input Actions")]
     public InputAction moveAction;
