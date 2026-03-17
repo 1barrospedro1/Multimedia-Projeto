@@ -5,10 +5,13 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f;
     public float crouchSpeed = 2.5f;
     public float jumpForce = 5f;
 
+    [Header("Movement Speeds")]
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 10f;
+    
     [Header("Ground Check")]
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public InputAction moveAction;
     public InputAction jumpAction;
     public InputAction crouchAction;
+    public InputAction sprintAction;
 
     private Rigidbody rb;
     private Vector2 movementInput;
@@ -33,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         
-        currentSpeed = moveSpeed;
+        currentSpeed = walkSpeed;
         standingScale = transform.localScale;
         // Halve the Y scale for crouching
         crouchScale = new Vector3(standingScale.x, standingScale.y * 0.5f, standingScale.z); 
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         moveAction.Enable();
         jumpAction.Enable();
         crouchAction.Enable();
+        sprintAction.Enable();
     }
 
     private void OnDisable()
@@ -51,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         moveAction.Disable();
         jumpAction.Disable();
         crouchAction.Disable();
+        sprintAction.Disable();
     }
 
     void Update()
@@ -69,18 +75,24 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
 
-        // 4. Crouch Logic
+        // 4 & 5. Crouch and Sprint Logic combined so they don't fight
         if (crouchAction.IsPressed())
         {
             transform.localScale = crouchScale;
             currentSpeed = crouchSpeed;
         }
-        else
+        else if (sprintAction.IsPressed())
         {
             transform.localScale = standingScale;
-            currentSpeed = moveSpeed;
+            currentSpeed = sprintSpeed;
         }
-    }
+        else
+        {
+            // Default walking state
+            transform.localScale = standingScale;
+            currentSpeed = walkSpeed;
+        }
+    } 
 
     void FixedUpdate()
     {
