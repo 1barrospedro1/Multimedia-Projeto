@@ -18,6 +18,6 @@
 * **F** - Ligar/Desligar lanterna
 
 ## Desenvolvido Com
-* Unity
+* Unity (6000.3.9f1)
 * C#
 * Unity New Input System
