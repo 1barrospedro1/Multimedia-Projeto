@@ -21,3 +21,8 @@
 * Unity (6000.3.9f1)
 * C#
 * Unity New Input System
+
+## Assets Utilizados
+* **[VINTAGE LIVING ROOM 3D GAME PACK](https://assetstore.unity.com/packages/3d/environments/vintage-living-room-3d-game-pack-314464)**
+* **[Basic Bedroom Starterpack](https://assetstore.unity.com/packages/3d/props/basic-bedroom-starterpack-215986)**
+* **[Old Floor Linoleum FREE](https://assetstore.unity.com/packages/2d/textures-materials/floors/old-floor-linoleum-free-317315)**
