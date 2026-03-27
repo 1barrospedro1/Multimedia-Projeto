@@ -17,6 +17,7 @@
 * **Left Shift** - Correr
 * **Ctrl** - Agachar
 * **F** - Ligar/Desligar lanterna
+* **E** - Interagir
 
 ## Desenvolvido Com
 * Unity (6000.3.9f1)
