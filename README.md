@@ -8,6 +8,7 @@
 * **Visão com o rato:** Matemática de rotação de câmera customizada que ignora a interpolação de física para evitar micro-travamentos (micro-stutters).
 * **Lanterna:** Uma lanterna que pode ser ativada ou desativada com um efeito 'flicker' personalizado baseado em corrotinas.
 * **Movimento Dinâmico da Cabeça ('Head Bobbing'):** Movimento da câmera que simula naturalmente os passos de caminhada/corrida (e para quando o jogador está no ar).
+* **Interação:** Mecânica para interagir com objetos.
 
 ## Controlos
 * **W, A, S, D** - Mover
