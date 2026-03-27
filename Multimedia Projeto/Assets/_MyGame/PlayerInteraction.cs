@@ -13,6 +13,9 @@ public class PlayerInteraction : MonoBehaviour
     public Image crosshair;
     public TextMeshProUGUI promptText;
 
+    public Color defaultCrosshairColor = Color.white; 
+    public Color interactCrosshairColor = Color.red;
+
     [Header("Input Action")]
     public InputAction interactAction;
 
@@ -22,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         // 1. Reset UI to default every single frame
-        crosshair.color = Color.white;
+        crosshair.color = defaultCrosshairColor;
         promptText.text = "";
 
         // 2. Shoot the laser
@@ -36,8 +39,8 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)
             {
                 // 3. We hit something interactive! Change the UI.
-                crosshair.color = Color.green; 
-                promptText.text = interactable.GetInteractPrompt() + " [E]";
+                crosshair.color = interactCrosshairColor; 
+                promptText.text = interactable.GetInteractPrompt() + " <sprite index=0>";
 
                 // 4. Listen for the button press
                 if (interactAction.WasPressedThisFrame())
