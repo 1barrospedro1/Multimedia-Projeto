@@ -6,6 +6,7 @@ public class Flashlight : MonoBehaviour
     [Header("Flashlight Component")]
     [Tooltip("Drag the Light component here")]
     public Light spotlight;
+    public AudioSource clickSound;
 
     [Header("Input Settings")]
     public InputAction toggleAction;
@@ -27,6 +28,10 @@ public class Flashlight : MonoBehaviour
         {
             // This flips the boolean. If it's true, it becomes false. If false, true
             spotlight.enabled = !spotlight.enabled;
+            if (clickSound != null)
+            {
+                clickSound.Play(); 
+            }
         }
     }
 }
