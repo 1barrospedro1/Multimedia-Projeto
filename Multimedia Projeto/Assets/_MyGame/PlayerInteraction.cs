@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 // 3. We hit something interactive! Change the UI.
                 crosshair.color = interactCrosshairColor; 
-                promptText.text = interactable.GetInteractPrompt() + " <sprite index=0>";
+                promptText.text = interactable.GetInteractPrompt();
 
                 // 4. Listen for the button press
                 if (interactAction.WasPressedThisFrame())

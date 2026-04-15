@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e7fd21070b74d478dd90adcdbb56e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelDoor
-  promptMessage: INTERACT
+  promptMessage: <size=80%><sprite index=0>Interact</size>
   sceneToLoad: Nightmare1
 --- !u!1001 &1091466490
 PrefabInstance:
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd6d1c6f4ddf4342bf137f999508cf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestInteractable
-  promptMessage: '    INTERACT'
+  promptMessage: <size=80%>I'm not sleepy ...</size>
 --- !u!65 &1164157619
 BoxCollider:
   m_ObjectHideFlags: 0
