@@ -4,6 +4,7 @@ public class PaintingWallSpot : MonoBehaviour, IInteractable
 {
     public PlayerInventory playerInventory;
     public GameObject finishedPaintingVisual; // The completed painting on the wall
+    public GameObject ventCover;
     
     public void Interact()
     {
@@ -11,7 +12,12 @@ public class PaintingWallSpot : MonoBehaviour, IInteractable
         if (playerInventory.hasHorsePainting)
         {
             playerInventory.hasHorsePainting = false; // Remove it from inventory
+            playerInventory.paintingPlaced = true;    // Tell the inventory the puzzle is officially complete!
             finishedPaintingVisual.SetActive(true);   // Reveal the painting on the wall
+            if (ventCover != null)
+            {
+                ventCover.SetActive(false);
+            }
             gameObject.SetActive(false);              // Hide this gray box
         }
     }
