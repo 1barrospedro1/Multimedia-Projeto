@@ -3,8 +3,9 @@ using UnityEngine;
 public class MoveDesk : MonoBehaviour, IInteractable
 {
     [Header("Connections")]
-    public PlayerInventory playerInventory; // To check if the puzzle is done
+    public PlayerInventory playerInventory; 
     public Transform targetLocation; 
+    public AudioClip slideSound; 
     
     [Header("Text Prompts")]
     public string observationText = "<size=80%>There's a weird vent behind the desk...</size>";
@@ -17,6 +18,12 @@ public class MoveDesk : MonoBehaviour, IInteractable
         // Only let them push if puzzle is done AND it hasn't been moved yet
         if (playerInventory.paintingPlaced && !hasMoved)
         {
+            // Play the sliding sound exactly where the desk is currently located
+            if (slideSound != null)
+            {
+                AudioSource.PlayClipAtPoint(slideSound, transform.position);
+            }
+
             // Move the desk
             transform.position = targetLocation.position;
             transform.rotation = targetLocation.rotation;
