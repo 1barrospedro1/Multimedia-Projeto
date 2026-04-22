@@ -3,7 +3,7 @@ using UnityEngine;
 public class PickupPainting : MonoBehaviour, IInteractable
 {
     public PlayerInventory playerInventory;
-    public string promptText = "<sprite index=0>Pick up Painting";
+    public string promptText = "<size=80%><sprite index=0>Pick up Painting</size>";
 
     public void Interact()
     {
