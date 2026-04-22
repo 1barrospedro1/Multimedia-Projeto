@@ -1,13 +1,19 @@
-﻿// Script by Marcelli Michele
-
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 
 public class PadLockPassword : MonoBehaviour
 {
     MoveRuller _moveRull;
-
     public int[] _numberPassword = {0,0,0,0};
+    
+    [Header("Custom Win Events")]
+    public InteractPadlock lockManager; 
+    // --- CHANGED THESE TWO LINES ---
+    public GameObject closedCabinetDoor; // Hide closed door
+    public GameObject openCabinetDoor;   // Show open door
+    
+    public AudioClip unlockSound;       
+    public AudioClip wrongCodeSound;    
 
     private void Awake()
     {
@@ -16,18 +22,39 @@ public class PadLockPassword : MonoBehaviour
 
     public void Password()
     {
-        if (_moveRull._numberArray.SequenceEqual(_numberPassword))
+        if (lockManager == null || !lockManager.isInteracting)
         {
-            // Here enter the event for the correct combination
-            Debug.Log("Password correct");
+            return;
+        }
 
-            // Es. Below the for loop to disable Blinking Material after the correct password
-            for (int i = 0; i < _moveRull._rullers.Count; i++)
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log($"The lock currently reads: {_moveRull._numberArray[0]} - {_moveRull._numberArray[1]} - {_moveRull._numberArray[2]} - {_moveRull._numberArray[3]}");
+
+            if (_moveRull._numberArray.SequenceEqual(_numberPassword))
             {
-                _moveRull._rullers[i].GetComponent<PadLockEmissionColor>()._isSelect = false;
-                _moveRull._rullers[i].GetComponent<PadLockEmissionColor>().BlinkingMaterial();
-            }
+                // --- SUCCESS ---
+                for (int i = 0; i < _moveRull._rullers.Count; i++)
+                {
+                    _moveRull._rullers[i].GetComponent<PadLockEmissionColor>()._isSelect = false;
+                    _moveRull._rullers[i].GetComponent<PadLockEmissionColor>().BlinkingMaterial();
+                }
 
+                if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position);
+                if (lockManager != null) lockManager.ExitLock();
+                
+                // --- THE DOOR SWAP ---
+                if (closedCabinetDoor != null) closedCabinetDoor.SetActive(false);
+                if (openCabinetDoor != null) openCabinetDoor.SetActive(true);
+                
+                gameObject.SetActive(false); // Hide the lock
+            }
+            else
+            {
+                // --- FAILED GUESS ---
+                Debug.Log("Wrong Code!");
+                if (wrongCodeSound != null) AudioSource.PlayClipAtPoint(wrongCodeSound, transform.position);
+            }
         }
     }
 }
