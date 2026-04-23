@@ -12,8 +12,12 @@ public class PadLockPassword : MonoBehaviour
     public GameObject closedCabinetDoor; // Hide closed door
     public GameObject openCabinetDoor;   // Show open door
     
-    public AudioClip unlockSound;       
+    public AudioClip unlockSound;
+    [Range(0f, 1f)] 
+    public float unlockSoundVolume = 0.5f;       
     public AudioClip wrongCodeSound;    
+    [Range(0f, 1f)] 
+    public float WrongSoundVolume = 0.5f;
 
     private void Awake()
     {
@@ -40,7 +44,7 @@ public class PadLockPassword : MonoBehaviour
                     _moveRull._rullers[i].GetComponent<PadLockEmissionColor>().BlinkingMaterial();
                 }
 
-                if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position);
+                if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position, unlockSoundVolume);
                 if (lockManager != null) lockManager.ExitLock();
                 
                 // --- THE DOOR SWAP ---
@@ -53,7 +57,7 @@ public class PadLockPassword : MonoBehaviour
             {
                 // --- FAILED GUESS ---
                 Debug.Log("Wrong Code!");
-                if (wrongCodeSound != null) AudioSource.PlayClipAtPoint(wrongCodeSound, transform.position);
+                if (wrongCodeSound != null) AudioSource.PlayClipAtPoint(wrongCodeSound, transform.position, WrongSoundVolume);
             }
         }
     }
