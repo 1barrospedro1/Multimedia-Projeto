@@ -1,0 +1,114 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerMovement : MonoBehaviour
+{
+    [Header("Movement Settings")]
+    public float crouchSpeed = 2.5f;
+    public float jumpForce = 5f;
+
+    [Header("Movement Speeds")]
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 10f;
+    
+    [Header("Ground Check")]
+    public Transform groundCheck;
+    public float groundDistance = 0.4f;
+    public LayerMask groundMask;
+    public bool isGrounded;
+
+    [Header("Input Actions")]
+    public InputAction moveAction;
+    public InputAction jumpAction;
+    public InputAction crouchAction;
+    public InputAction sprintAction;
+
+    private Rigidbody rb;
+    private Vector2 movementInput;
+    private float currentSpeed;
+    
+    // Variables for crouching
+    private Vector3 standingScale;
+    private Vector3 crouchScale;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        
+        currentSpeed = walkSpeed;
+        standingScale = transform.localScale;
+        // Halve the Y scale for crouching
+        crouchScale = new Vector3(standingScale.x, standingScale.y * 0.5f, standingScale.z); 
+    }
+
+    private void OnEnable()
+    {
+        moveAction.Enable();
+        jumpAction.Enable();
+        crouchAction.Enable();
+        sprintAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.Disable();
+        jumpAction.Disable();
+        crouchAction.Disable();
+        sprintAction.Disable();
+    }
+
+    void Update()
+    {
+        // 1. Ground Check: Creates an invisible sphere at the player's feet to check for the ground
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        // 2. Read Movement Input
+        movementInput = moveAction.ReadValue<Vector2>();
+
+        // 3. Jump Logic
+        if (jumpAction.WasPressedThisFrame() && isGrounded)
+        {
+            // Reset Y velocity first so jumps are always exactly the same height
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+        }
+
+        // 4 & 5. Crouch and Sprint Logic combined so they don't fight
+        if (crouchAction.IsPressed())
+        {
+            transform.localScale = crouchScale;
+            currentSpeed = crouchSpeed;
+        }
+        else if (sprintAction.IsPressed())
+        {
+            transform.localScale = standingScale;
+            currentSpeed = sprintSpeed;
+        }
+        else
+        {
+            // Default walking state
+            transform.localScale = standingScale;
+            currentSpeed = walkSpeed;
+        }
+    } 
+
+    void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MovePlayer()
+    {
+        Vector3 moveDirection = transform.right * movementInput.x + transform.forward * movementInput.y;
+
+        if (moveDirection.magnitude > 1f)
+        {
+            moveDirection.Normalize();
+        }
+
+        Vector3 targetVelocity = moveDirection * currentSpeed;
+        rb.linearVelocity = new Vector3(targetVelocity.x, rb.linearVelocity.y, targetVelocity.z);
+    }
+}
