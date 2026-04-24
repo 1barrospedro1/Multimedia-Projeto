@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // 1. Added this to manage scenes!
+using System.Collections;          // 2. Added this for our timer delay!
 
 public class FinalDoor : MonoBehaviour, IInteractable
 {
@@ -13,6 +15,10 @@ public class FinalDoor : MonoBehaviour, IInteractable
     [Header("Audio")]
     public AudioClip unlockSound;
     public AudioClip lockedSound;
+
+    [Header("Scene Transition")]
+    public string sceneToLoad = "ChaseScene"; // Type your exact scene name here
+    public float delayBeforeLoad = 1.0f; // Gives the door time to open and sound to play
 
     private bool isEscaped = false;
 
@@ -29,15 +35,25 @@ public class FinalDoor : MonoBehaviour, IInteractable
             if (leftDoor != null) leftDoor.SetActive(false);
             if (rightDoor != null) rightDoor.SetActive(false);
             
-            // Turn off this invisible interaction box so they can't click it anymore
-            gameObject.SetActive(false);
+            // Turn off the visuals/colliders of this object, but keep the script running
+            GetComponent<Collider>().enabled = false; 
             
-            Debug.Log("<color=yellow>!!! YOU ESCAPED !!!</color>");
+            // Start the teleportation timer!
+            StartCoroutine(TeleportSequence());
         }
         else
         {
             if (lockedSound != null) AudioSource.PlayClipAtPoint(lockedSound, transform.position);
         }
+    }
+
+    IEnumerator TeleportSequence()
+    {
+        // Wait for the sound to play and let the player realize the door is open
+        yield return new WaitForSeconds(delayBeforeLoad);
+
+        // Teleport to the Chase Scene!
+        SceneManager.LoadScene(sceneToLoad);
     }
 
     public string GetInteractPrompt()
