@@ -1374,6 +1374,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1202281437}
     - target: {fileID: 3404402356410622242, guid: 852a11fecc1877149be52139ea40a3be, type: 3}
+      propertyPath: unlockSoundVolume
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3404402356410622242, guid: 852a11fecc1877149be52139ea40a3be, type: 3}
       propertyPath: _numberPassword.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -23096,7 +23100,7 @@ GameObject:
   - component: {fileID: 215435308}
   m_Layer: 7
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Vent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24023,6 +24027,7 @@ MonoBehaviour:
   finishedPaintingVisual: {fileID: 177877857}
   ventCover: {fileID: 90417266}
   ventOpenSound: {fileID: 8300000, guid: 90506ad0c1a2ee2498071e723df9295d, type: 3}
+  soundVolume: 1
 --- !u!1001 &305203641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24861,8 +24866,16 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4017655089809435422, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
       insertIndex: -1
       addedObject: {fileID: 252627397}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3544570483226561172, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1706042716}
   m_SourcePrefab: {fileID: 100100000, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
+--- !u!1 &501170037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3544570483226561172, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
+  m_PrefabInstance: {fileID: 501170036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &503937264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25209,6 +25222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BreakPlank
   playerInventory: {fileID: 951734714}
   breakSound: {fileID: 8300000, guid: f4b72dbfea2691e47a7379275816a45d, type: 3}
+  soundVolume: 1
 --- !u!1001 &563620242
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27512,7 +27526,7 @@ GameObject:
   - component: {fileID: 930067859}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: Vent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27615,7 +27629,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5703894889833496330, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
   m_PrefabInstance: {fileID: 501170036}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 501170037}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247574f24eb7a254f959e9f1edb4ec0c, type: 3}
@@ -28354,6 +28368,7 @@ MonoBehaviour:
   playerInventory: {fileID: 951734714}
   targetLocation: {fileID: 676210741}
   slideSound: {fileID: 8300000, guid: f7398c7dea3311a4789938a7125ef83b, type: 3}
+  soundVolume: 1
   observationText: There's a weird vent behind the desk...
   pushText: <sprite index=0> Push Desk
 --- !u!65 &1063957790
@@ -29718,6 +29733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BreakPlank
   playerInventory: {fileID: 951734714}
   breakSound: {fileID: 8300000, guid: f4b72dbfea2691e47a7379275816a45d, type: 3}
+  soundVolume: 1
 --- !u!1 &1280471134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5028704506512673603, guid: 4819b9f5d2d23d745b1e78c7ea84d764, type: 3}
@@ -29758,7 +29774,7 @@ GameObject:
   - component: {fileID: 1280503368}
   m_Layer: 7
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Vent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32338,12 +32354,29 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 205599556700378214, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
   m_PrefabInstance: {fileID: 501170036}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 501170037}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dce65adc81468774c8ecdb74eaf9d8e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+--- !u!114 &1706042716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501170037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a88e1284d6f8245aea3067e07450fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFootsteps
+  normalStep: {fileID: 8300000, guid: d70b1f669f963504f81814116456e0b5, type: 3}
+  ventStep: {fileID: 8300000, guid: 398d3bcaaf7312b4e9e6857637d8a659, type: 3}
+  waterStep: {fileID: 8300000, guid: 6d4d6fbe77ed5a949966f89e7bfc0c2e, type: 3}
+  stepInterval: 0.5
+  volume: 1
 --- !u!4 &1712938609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3240393995222680080, guid: b0e70e3d2ca65f745bec8544467f2867, type: 3}
@@ -32464,6 +32497,7 @@ MonoBehaviour:
   clueScreen: {fileID: 1883560261}
   turnOnSound: {fileID: 8300000, guid: 8e73042a6b9606b46b28d445dbcbf2b2, type: 3}
   turnOffSound: {fileID: 8300000, guid: 1cf115b622ce5dc45949bc7455dd9ac4, type: 3}
+  soundVolume: 1
 --- !u!1 &1750955835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2619997981936644809, guid: dbbe5fa85d4d5e642bcdefc9738dffd0, type: 3}
@@ -32631,6 +32665,7 @@ MonoBehaviour:
   rightDoor: {fileID: 45158995}
   unlockSound: {fileID: 8300000, guid: b837ea96512150a42a465e9712fa40f7, type: 3}
   lockedSound: {fileID: 8300000, guid: 8214c420f48952a41b84a493f52d5225, type: 3}
+  soundVolume: 1
   sceneToLoad: ChaseScene
   delayBeforeLoad: 1
 --- !u!65 &1776968769
@@ -33148,7 +33183,7 @@ GameObject:
   - component: {fileID: 1813350925}
   m_Layer: 7
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Vent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34813,7 +34848,7 @@ GameObject:
   - component: {fileID: 2082145482}
   m_Layer: 7
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Vent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

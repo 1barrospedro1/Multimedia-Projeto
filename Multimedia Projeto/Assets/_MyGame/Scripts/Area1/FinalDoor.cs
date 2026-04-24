@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // 1. Added this to manage scenes!
-using System.Collections;          // 2. Added this for our timer delay!
+using UnityEngine.SceneManagement; 
+using System.Collections;          
 
 public class FinalDoor : MonoBehaviour, IInteractable
 {
@@ -15,6 +15,8 @@ public class FinalDoor : MonoBehaviour, IInteractable
     [Header("Audio")]
     public AudioClip unlockSound;
     public AudioClip lockedSound;
+    [Range(0f, 1f)] 
+    public float soundVolume = 1.0f; 
 
     [Header("Scene Transition")]
     public string sceneToLoad = "ChaseScene"; // Type your exact scene name here
@@ -29,7 +31,9 @@ public class FinalDoor : MonoBehaviour, IInteractable
         if (playerInventory.hasRustyKey)
         {
             isEscaped = true;
-            if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position);
+            
+            // Added soundVolume here for the successful unlock!
+            if (unlockSound != null) AudioSource.PlayClipAtPoint(unlockSound, transform.position, soundVolume);
             
             // Turn off both doors
             if (leftDoor != null) leftDoor.SetActive(false);
@@ -43,7 +47,8 @@ public class FinalDoor : MonoBehaviour, IInteractable
         }
         else
         {
-            if (lockedSound != null) AudioSource.PlayClipAtPoint(lockedSound, transform.position);
+            // Added soundVolume here for the locked rattle!
+            if (lockedSound != null) AudioSource.PlayClipAtPoint(lockedSound, transform.position, soundVolume);
         }
     }
 
