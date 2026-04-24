@@ -33,7 +33,7 @@ public class SafeRoomDoor : MonoBehaviour, IInteractable
     {
         if (playerInventory.hasSafeRoomKey)
         {
-            return "<size=80%><sprite index=0> Enter Main Game</size>";
+            return "<size=80%><sprite index=0> Open door</size>";
         }
         else
         {
