@@ -1,23 +1,31 @@
 using UnityEngine;
-using UnityEngine.SceneManagement; // Needed to load your game!
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
-    [Header("Level Loading")]
-    public string firstLevelName = "SafeRoom"; 
-
-    public void StartGame()
+    void Start()
     {
-        // Loads the first level of your game
-        SceneManager.LoadScene(firstLevelName);
+        // 1. Unfreeze time (in case we came from a Game Over or Win screen)
+        Time.timeScale = 1f;
+
+        // 2. Unlock the cursor from the center of the screen
+        Cursor.lockState = CursorLockMode.None;
+
+        // 3. Make the cursor visible so we can click things!
+        Cursor.visible = true;
     }
 
+    // You can attach this to your 'Play' button!
+    public void StartGame()
+    {
+        // Replace "Nightmare1" with the exact name of your first level
+        SceneManager.LoadScene("Nightmare1");
+    }
+
+    // You can attach this to your 'Quit' button!
     public void QuitGame()
     {
-        // This prints a message in the Unity Editor so you know it works
-        Debug.Log("The player has quit the game!");
-        
-        // This actually closes the game when you build and play it for real
+        Debug.Log("Game is quitting!"); // This just prints in the editor so we know it works
         Application.Quit();
     }
 }
