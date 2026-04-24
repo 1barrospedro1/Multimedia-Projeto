@@ -1331,7 +1331,7 @@ MonoBehaviour:
   openCabinetDoor: {fileID: 2060732648}
   scaryHeadAndKey: {fileID: 1107444407}
   scareSound: {fileID: 8300000, guid: 59cba8c2328f23f40bf2bdd581a75fc6, type: 3}
-  soundVolume: 1
+  soundVolume: 0.6
 --- !u!23 &935225266
 MeshRenderer:
   m_ObjectHideFlags: 0
