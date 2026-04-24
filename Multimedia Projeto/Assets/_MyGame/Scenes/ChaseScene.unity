@@ -1250,10 +1250,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 5
-  m_Acceleration: 8
+  m_Speed: 4
+  m_Acceleration: 6
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 8
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -4772,7 +4772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7132470507293363630, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 41.3
       objectReference: {fileID: 0}
     - target: {fileID: 7132470507293363630, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4780,7 +4780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7132470507293363630, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.81
+      value: -17.9
       objectReference: {fileID: 0}
     - target: {fileID: 7132470507293363630, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6083,6 +6083,133 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.31795835, y: 0.3395308, z: 0.061486986}
   m_Center: {x: -0.00000023336533, y: 0.16955955, z: 0.00000013057911}
+--- !u!1 &583645527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 583645532}
+  - component: {fileID: 583645531}
+  - component: {fileID: 583645530}
+  - component: {fileID: 583645529}
+  - component: {fileID: 583645528}
+  m_Layer: 0
+  m_Name: VentDeathBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &583645528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583645527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cf1921563446543baf2068d1bf3d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeathVolume
+  gameOverScreen: {fileID: 1099238083}
+  timeBeforeRestart: 2.5
+--- !u!65 &583645529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583645527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &583645530
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583645527}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &583645531
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583645527}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &583645532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583645527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.96, y: -3.28, z: 17.1}
+  m_LocalScale: {x: 30, y: 1, z: 10}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &596953762 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4669744062039706045, guid: 93d24e11d04757f41a0bd65cd0d3cff3, type: 3}
@@ -6551,7 +6678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8675915457954794082, guid: 3fc537e92bf3d2449b5be72cfd6cb447, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.444
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 8675915457954794082, guid: 3fc537e92bf3d2449b5be72cfd6cb447, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10635,7 +10762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CONGRATS! YOU ESCAPED
+  m_text: CONGRATS! YOU ESCAPED SUCCESSFULLY
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4531bcc1da9b4624b9b1aac10c778738, type: 2}
   m_sharedMaterial: {fileID: 7612206685739446287, guid: 4531bcc1da9b4624b9b1aac10c778738, type: 2}
@@ -12567,8 +12694,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a753dbe0e1b88b5489d19364813e7a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EscapeBed
-  interactPrompt: {fileID: 1299441535}
   winScreen: {fileID: 1887631873}
+  mainMenuScene: MainMenu
+  timeToShowScreen: 4
+  hideSound: {fileID: 0}
 --- !u!65 &1417225813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12584,7 +12713,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -17949,3 +18078,4 @@ SceneRoots:
   - {fileID: 1887631877}
   - {fileID: 2099753132}
   - {fileID: 1299441539}
+  - {fileID: 583645532}
