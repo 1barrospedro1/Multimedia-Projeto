@@ -19,7 +19,7 @@ public class MainMenuController : MonoBehaviour
     public void StartGame()
     {
         // Replace "Nightmare1" with the exact name of your first level
-        SceneManager.LoadScene("Nightmare1");
+        SceneManager.LoadScene("SafeRoom");
     }
 
     // You can attach this to your 'Quit' button!

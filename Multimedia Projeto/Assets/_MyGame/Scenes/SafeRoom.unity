@@ -3083,19 +3083,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3544570483226561172, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4960163708108317970}
   m_SourcePrefab: {fileID: 100100000, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
 --- !u!114 &4960163708108317968 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5703894889833496330, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
   m_PrefabInstance: {fileID: 4960163708108317967}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4960163708108317969}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 247574f24eb7a254f959e9f1edb4ec0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &4960163708108317969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3544570483226561172, guid: 14902d07e62edb546a37a7174f8f6202, type: 3}
+  m_PrefabInstance: {fileID: 4960163708108317967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4960163708108317970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4960163708108317969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a88e1284d6f8245aea3067e07450fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFootsteps
+  normalStep: {fileID: 8300000, guid: d70b1f669f963504f81814116456e0b5, type: 3}
+  ventStep: {fileID: 8300000, guid: 398d3bcaaf7312b4e9e6857637d8a659, type: 3}
+  waterStep: {fileID: 8300000, guid: 6d4d6fbe77ed5a949966f89e7bfc0c2e, type: 3}
+  stepInterval: 0.5
+  volume: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

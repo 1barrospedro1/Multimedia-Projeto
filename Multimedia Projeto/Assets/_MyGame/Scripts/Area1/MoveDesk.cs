@@ -6,6 +6,8 @@ public class MoveDesk : MonoBehaviour, IInteractable
     public PlayerInventory playerInventory; 
     public Transform targetLocation; 
     public AudioClip slideSound; 
+    [Range(0f, 1f)] 
+    public float soundVolume = 1.0f; 
     
     [Header("Text Prompts")]
     public string observationText = "<size=80%>There's a weird vent behind the desk...</size>";
@@ -18,10 +20,10 @@ public class MoveDesk : MonoBehaviour, IInteractable
         // Only let them push if puzzle is done AND it hasn't been moved yet
         if (playerInventory.paintingPlaced && !hasMoved)
         {
-            // Play the sliding sound exactly where the desk is currently located
+            // Play the sliding sound exactly where the desk is currently located, at your chosen volume!
             if (slideSound != null)
             {
-                AudioSource.PlayClipAtPoint(slideSound, transform.position);
+                AudioSource.PlayClipAtPoint(slideSound, transform.position, soundVolume);
             }
 
             // Move the desk

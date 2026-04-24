@@ -5,8 +5,12 @@ public class InteractTV : MonoBehaviour, IInteractable
     [Header("TV Components")]
     public GameObject tvLight;      // The TV light
     public GameObject clueScreen;   // For the clue
+    
+    [Header("Audio Settings")]
     public AudioClip turnOnSound;   // On sound
     public AudioClip turnOffSound;   // Off sound
+    [Range(0f, 1f)] 
+    public float soundVolume = 1.0f; 
 
     private bool isOn = false;
 
@@ -22,7 +26,8 @@ public class InteractTV : MonoBehaviour, IInteractable
             
             if (turnOnSound != null)
             {
-                AudioSource.PlayClipAtPoint(turnOnSound, transform.position);
+                // Added soundVolume here!
+                AudioSource.PlayClipAtPoint(turnOnSound, transform.position, soundVolume);
             }
         }
         else
@@ -33,7 +38,8 @@ public class InteractTV : MonoBehaviour, IInteractable
 
             if (turnOffSound != null)
             {
-                AudioSource.PlayClipAtPoint(turnOffSound, transform.position);
+                // Added soundVolume here too!
+                AudioSource.PlayClipAtPoint(turnOffSound, transform.position, soundVolume);
             }
         }
     }
@@ -49,4 +55,4 @@ public class InteractTV : MonoBehaviour, IInteractable
             return "<size=80%><sprite index=0> Turn Off TV</size>";
         }
     }
-}  
+}

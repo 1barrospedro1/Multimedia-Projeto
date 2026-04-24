@@ -3,17 +3,21 @@ using UnityEngine;
 public class BreakPlank : MonoBehaviour, IInteractable
 {
     public PlayerInventory playerInventory;
+    
+    [Header("Audio Settings")]
     public AudioClip breakSound; 
+    [Range(0f, 1f)] 
+    public float soundVolume = 1.0f; 
 
     public void Interact()
     {
         // Only let them interact if they actually have the crowbar
         if (playerInventory.hasCrowbar)
         {
-            // Play the breaking sound right at this exact position
+            // Play the breaking sound right at this exact position, at your chosen volume!
             if (breakSound != null)
             {
-                AudioSource.PlayClipAtPoint(breakSound, transform.position);
+                AudioSource.PlayClipAtPoint(breakSound, transform.position, soundVolume);
             }
 
             // "Break" the plank by hiding it
