@@ -26,6 +26,14 @@ O jogo é uma experiência de terror e escape room em primeira pessoa. O jogador
 * C#
 * AudioMass
 
+## Como Abrir o Projeto
+
+1. Fazer o download ou clonar este repositório.
+2. Abrir o Unity Hub, clicar em "Add" (ou Open) e selecionar a pasta do projeto.
+3. Abrir com a versão do Unity 6000.3.9f1.
+4. Na janela "Project", ir à pasta das Cenas e abrir a cena MainMenu.
+5. Pressionar o botão "Play" no topo do editor para jogar
+
 ## Assets Utilizados
 * **[VINTAGE LIVING ROOM 3D GAME PACK](https://assetstore.unity.com/packages/3d/environments/vintage-living-room-3d-game-pack-314464)**
 * **[Basic Bedroom Starterpack](https://assetstore.unity.com/packages/3d/props/basic-bedroom-starterpack-215986)**
